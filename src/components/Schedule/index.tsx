@@ -4,15 +4,13 @@ import {
     XAxis, YAxis, CartesianGrid, Tooltip, Legend, ScatterChart, Scatter,
 } from 'recharts';
 
-import { plan } from 'server';
+import { plan, fact } from 'server';
 import moment from 'moment';
 import { CustomTooltip } from 'components/CustomTooltip';
-import { TPlaneData } from 'types';
+import { TJsonData } from 'types';
 
-const Schedule = () => {
-    const ticks: number[] = Array.from({ length: 31 }, (_, i) => i + 1);
-
-    const modifiedPlane = plan.map((el: TPlaneData) => {
+function modifiedObject(obj: TJsonData[]) {
+    return obj.map((el: TJsonData) => {
         const work_day = moment(el.dt_start).format('D');
 
         const duration = moment.duration(moment(el.dt_end).diff(el.dt_start));
@@ -20,13 +18,20 @@ const Schedule = () => {
 
         return { ...el, work_day, worked_hours };
     });
+}
+
+const Schedule = () => {
+    const ticks: number[] = Array.from({ length: 31 }, (_, i) => i + 1);
+
+    const modifiedPlane = modifiedObject(plan);
+    const modifiedFact = modifiedObject(fact)
+        .filter(el => el.worked_hours !== 8);
 
     return (
         <ScatterChart
             layout="vertical"
             width={1200}
             height={500}
-            data={modifiedPlane}
             margin={{
                 top: 20,
                 right: 20,
@@ -49,7 +54,8 @@ const Schedule = () => {
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend verticalAlign='top' />
-            <Scatter name="Авгус 2022" data={modifiedPlane} fill="#8884d8" shape='square' />
+            <Scatter name="Авгус 2022 план" data={modifiedPlane} fill="#43a047" shape='square' legendType='rect' />
+            <Scatter name="Авгус 2022 факт" data={modifiedFact} fill="#e53935" shape='square' legendType='rect' />
         </ScatterChart>
     );
 };

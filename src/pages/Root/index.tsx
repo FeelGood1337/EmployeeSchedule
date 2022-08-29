@@ -1,6 +1,3 @@
-/* eslint-disable camelcase */
-/* eslint-disable consistent-return */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 
 import cn from 'classnames';
