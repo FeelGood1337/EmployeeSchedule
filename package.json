@@ -1,5 +1,5 @@
 {
-  "name": "react-redux-starter",
+  "name": "employee-schedule",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,10 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jarith/react-redux-starter.git"
+    "url": "git+https://github.com/FeelGood1337/EmployeeSchedule.git"
   },
   "keywords": [],
-  "author": "jarith",
+  "author": "FeelGood1337",
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "7.18.6",
@@ -61,7 +61,7 @@
     "@reduxjs/toolkit": "1.8.3"
   },
   "bugs": {
-    "url": "https://github.com/Jarith/react-redux-starter/issues"
+    "url": "https://github.com/FeelGood1337/EmployeeSchedule/issues"
   },
-  "homepage": "https://github.com/Jarith/react-redux-starter#readme"
+  "homepage": "https://github.com/FeelGood1337/EmployeeSchedule#readme"
 }
